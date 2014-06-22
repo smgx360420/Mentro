@@ -1,5 +1,5 @@
 TARGET = MENTRO
-OBJS   = main.o Callbacks.o Menu/Menu.o
+OBJS   = main.o Callbacks.o Menu/Menu.o Menu/Wave.o
  
 INCDIR   =
 CFLAGS   = -G0 -Wall -O2 -D VHBL
