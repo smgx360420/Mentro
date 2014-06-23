@@ -1,6 +1,7 @@
 #include "Wave.h"
 
-OSL_COLOR waveTop, waveBottom;
+OSL_COLOR waveTopA, waveBottomA;
+OSL_COLOR waveTopB, waveBottomB;
 u16 waveProgression;
 
 void Wave::Render()
@@ -8,13 +9,13 @@ void Wave::Render()
 	for (int x = 0; x <= 480; x+=2)
 	{
 		int y = 30 * oslSin(waveProgression/4 + x, 1) + 100;
-		int y2 = 50 * oslSin(waveProgression / 2 + x, 1) + 100;
+		int y2 = 50 * oslSin(waveProgression / 2 + x/2, 1) + 100;
 
-		oslDrawGradientRect(x, 0, x + 2, y2, waveBottom, waveBottom, waveTop, waveTop);
-		oslDrawGradientRect(x, y2, x + 2, 272, waveTop, waveTop, waveBottom, waveBottom);
+		oslDrawGradientRect(x, y2 - 20, x + 2, y2, waveBottomA, waveBottomA, waveTopA, waveTopA);
+		oslDrawGradientRect(x, y2, x + 2, y2 + 100, waveTopA, waveTopA, waveBottomA, waveBottomA);
 
-		oslDrawGradientRect(x, 0 , x + 2, y, waveBottom, waveBottom, waveTop, waveTop);
-		oslDrawGradientRect(x, y, x + 2, 272, waveTop, waveTop, waveBottom, waveBottom);
+		oslDrawGradientRect(x, y - 20 , x + 2, y, waveBottomB, waveBottomB, waveTopB, waveTopB);
+		oslDrawGradientRect(x, y, x + 2, y + 100, waveTopB, waveTopB, waveBottomB, waveBottomB);
 	}
 }
 
@@ -24,8 +25,11 @@ void Wave::Update()
 	if (waveProgression >= 360 * 4)waveProgression = 0;
 }
 
-void Wave::Setup(u32 col1, u32 col2)
+void Wave::Setup(u32 col1, u32 col2, u32 col3, u32 col4)
 {
-	waveTop = col1;
-	waveBottom = col2;
+	waveTopA = col1;
+	waveBottomA = col2;
+
+	waveTopB = col3;
+	waveBottomB = col4;
 }

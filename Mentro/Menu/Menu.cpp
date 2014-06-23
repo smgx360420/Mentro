@@ -90,7 +90,7 @@ char* Menu::Start()
 
 	u32 shudSkip = 0;
 
-	Wave::Setup(RGBA(228, 69, 69, 200), RGBA(255, 255, 255, 0));
+	Wave::Setup(RGBA(228, 69, 69, 200), RGBA(0, 0, 0, 0), RGBA(228, 69, 69, 200), RGBA(0, 0, 0, 0));
 
 	OSL_IMAGE *wall = oslLoadImageFilePNG("WALL.PNG", OSL_IN_VRAM, OSL_PF_5650);
 
@@ -100,7 +100,7 @@ char* Menu::Start()
 		if (shudSkip)goto needToSkip;
 
 		oslStartDrawing();
-		
+
 		oslDrawImageXY(wall, 0, 0);
 
 		//If an update is pending, transition

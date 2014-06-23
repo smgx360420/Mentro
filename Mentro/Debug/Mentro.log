@@ -1,5 +1,5 @@
-﻿Build started 6/23/2014 1:07:56 AM.
-     1>Project "c:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" on node 2 (Build target(s)).
+﻿Build started 6/23/2014 1:29:53 AM.
+     1>Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" on node 2 (Build target(s)).
      1>Build:
          vsmake
          psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D VHBL -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D VHBL -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Menu/Wave.o Menu/Wave.cpp
@@ -15,11 +15,11 @@
          [3]          0 bytes | NULL
          [4]          0 bytes | NULL
          [5]          0 bytes | NULL
-         [6]     303056 bytes | MENTRO_strip.elf
+         [6]     303136 bytes | MENTRO_strip.elf
          [7]          0 bytes | NULL
          C:/pspsdk/bin/rm -f MENTRO_strip.elf
-     1>Done Building Project "c:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.56
+Time Elapsed 00:00:00.72
