@@ -1,9 +1,7 @@
 #pragma once
+#include "Section.h"
 
-#include <oslib\oslib.h>
-
-//Section allows for each bit of the menu to be separated from the rest of the code
-class Section
+class MainSection : public Section
 {
 public:
 	//All updates must be relative to the 'world' coordinates supplied
@@ -16,8 +14,5 @@ public:
 
 	virtual void UnloadResources();
 	virtual void LoadResources();
-
-	Section();
-	~Section();
 };
 

@@ -62,12 +62,15 @@
   <ItemGroup>
     <ClCompile Include="Callbacks.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu\MainSection.cpp" />
     <ClCompile Include="Menu\Menu.cpp" />
+    <ClCompile Include="Menu\Section.cpp" />
     <ClCompile Include="Menu\Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Menu\MainSection.h" />
     <ClInclude Include="Menu\Menu.h" />
     <ClInclude Include="Menu\Section.h" />
     <ClInclude Include="Menu\Wave.h" />

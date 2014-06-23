@@ -1,5 +1,5 @@
 TARGET = MENTRO
-OBJS   = main.o Callbacks.o Menu/Menu.o Menu/Wave.o
+OBJS   = main.o Callbacks.o Menu/Menu.o Menu/Wave.o Menu/MainSection.o Menu/Section.o
  
 INCDIR   =
 CFLAGS   = -G0 -Wall -O2 -D VHBL
@@ -9,8 +9,8 @@ ASFLAGS  = $(CFLAGS)
 LIBDIR  = libs
 LDFLAGS =
 LIBS    = -losl -lpng -lz \
-         -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum  -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan \
-         -lpspnet_adhocmatching -lpspnet_adhoc -lpspnet_adhocctl -lm -ljpeg
+         -lpspsdk -lpspctrl -lpsprtc -lpsppower -lpspgu -lpspgum  -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan \
+         -lpsphprm -lm -ljpeg
  
 BUILD_PRX = 1 
  

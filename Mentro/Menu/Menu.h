@@ -14,6 +14,7 @@ public:
 	static char* Start();
 	static int getAppType();
 	static int getExtraInfo();
+	static Section* getSection(u8 id);
 
 	static void TransitionSection(u8 sectToTranstion);
 	static void Launch(char* appPath, int appType, int appExtra);

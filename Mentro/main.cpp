@@ -1,6 +1,8 @@
 #include <pspsdk.h>
 #include "Callbacks.h"
 #include "Menu\Menu.h"
+#include "Menu\MainSection.h"
+#include "Menu\Section.h"
 
 //TODO Change the Name of the homebrew
 PSP_MODULE_INFO("Mentro", 0, 1, 0);
@@ -80,6 +82,12 @@ int main(int argc, char *argv[])
 	pspDebugScreenPrintf("Starting Menu...");
 
 	Menu::setAppPath(argv[0]);
+
+	//Declare, Initialize and register the initial section 0 - the main menu
+	MainSection mainSection;
+	Section *mainSectionPTR = &mainSection;
+	Menu::RegisterSection(mainSectionPTR);
+
 	char* appToLaunchPath = Menu::Start();
 
 

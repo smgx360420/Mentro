@@ -35,6 +35,11 @@ void Menu::TransitionSection(u8 sectToTransition)
 	updatePending = 1;	//The menu system needs to update its transition routines
 }
 
+Section* Menu::getSection(u8 id)
+{
+	return sections[id];
+}
+
 //Slide Transition effect 
 u16 frames = 0;
 u8 TransitionEffect()
@@ -83,16 +88,20 @@ char* Menu::Start()
 	oslInit(0);
 	oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8);
 	oslInitGfx(OSL_PF_8888, 1);
-	oslInitAudio();
+	//oslInitAudio();
 	oslSetQuitOnLoadFailure(1);
 	oslSetKeyAutorepeatInit(40);
 	oslSetKeyAutorepeatInterval(10);
+
+	pspDebugScreenPrintf("Initialized OSLib...");
 
 	u32 shudSkip = 0;
 
 	Wave::Setup(RGBA(228, 69, 69, 200), RGBA(0, 0, 0, 0), RGBA(228, 69, 69, 200), RGBA(0, 0, 0, 0));
 
 	OSL_IMAGE *wall = oslLoadImageFilePNG("WALL.PNG", OSL_IN_VRAM, OSL_PF_5650);
+
+	pspDebugScreenPrintf("Resources Loaded...");
 
 	//Menu Loop
 	while (!ShouldExit)
