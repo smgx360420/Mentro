@@ -8,7 +8,9 @@ ASFLAGS  = $(CFLAGS)
  
 LIBDIR  = libs
 LDFLAGS =
-LIBS    = -lstdc++ -lpng -lz -lm -losl -lpspsdk -ljpeg
+LIBS    = -losl -lpng -lz \
+         -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum  -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan \
+         -lpspnet_adhocmatching -lpspnet_adhoc -lpspnet_adhocctl -lm -ljpeg
  
 BUILD_PRX = 1 
  

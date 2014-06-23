@@ -1,0 +1,25 @@
+﻿Build started 6/23/2014 1:07:56 AM.
+     1>Project "c:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" on node 2 (Build target(s)).
+     1>Build:
+         vsmake
+         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D VHBL -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D VHBL -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Menu/Wave.o Menu/Wave.cpp
+         psp-gcc -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D VHBL -D_PSP_FW_VERSION=150  -Llibs -L. -LC:/pspsdk/psp/sdk/lib   main.o Callbacks.o Menu/Menu.o Menu/Wave.o -losl -lpng -lz -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum  -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan -lpspnet_adhocmatching -lpspnet_adhoc -lpspnet_adhocctl -lm -ljpeg -lpspdebug -lpspdisplay -lpspge -lpspctrl -lpspsdk -lc -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpsputility -lpspuser -lpspkernel -o MENTRO.elf
+         psp-fixup-imports MENTRO.elf
+         psp-strip MENTRO.elf -o MENTRO_strip.elf
+         pack-pbp EBOOT.PBP PARAM.SFO NULL  \
+         	NULL NULL NULL  \
+         	NULL  MENTRO_strip.elf NULL
+         [0]        408 bytes | PARAM.SFO
+         [1]          0 bytes | NULL
+         [2]          0 bytes | NULL
+         [3]          0 bytes | NULL
+         [4]          0 bytes | NULL
+         [5]          0 bytes | NULL
+         [6]     303056 bytes | MENTRO_strip.elf
+         [7]          0 bytes | NULL
+         C:/pspsdk/bin/rm -f MENTRO_strip.elf
+     1>Done Building Project "c:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.56
