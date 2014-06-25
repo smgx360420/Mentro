@@ -17,7 +17,8 @@ u8 updatePending = 0;
 void Menu::setAppPath(char *path)
 {
 	appPath = path;
-	*(strrchr(appPath, '/') + 1) = 0x0;	//Terminate app path at last directory before eboot
+	*(strrchr(appPath, '/') + 1) = 0x0;	//Terminate app path at last directory before eboot	
+	//sceIoChdir(appPath);
 }
 
 void Menu::RegisterSection(Section *section)
@@ -37,7 +38,9 @@ void Menu::TransitionSection(u8 sectToTransition)
 
 Section* Menu::getSection(u8 id)
 {
+	if (id < sectId)
 	return sections[id];
+	else return NULL;
 }
 
 //Slide Transition effect 
@@ -56,6 +59,8 @@ u8 TransitionEffect()
 	else{
 		frames = 0;
 		//Apply the update and resume normal functions
+		sections[curSectId]->UnloadResources();
+		sections[newSectId]->LoadResources();
 		curSectId = newSectId;
 		newSectId = 0;
 		return 0;
@@ -88,7 +93,7 @@ char* Menu::Start()
 	oslInit(0);
 	oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8);
 	oslInitGfx(OSL_PF_8888, 1);
-	//oslInitAudio();
+	oslInitAudio();
 	oslSetQuitOnLoadFailure(1);
 	oslSetKeyAutorepeatInit(40);
 	oslSetKeyAutorepeatInterval(10);
@@ -97,11 +102,20 @@ char* Menu::Start()
 
 	u32 shudSkip = 0;
 
-	Wave::Setup(RGBA(228, 69, 69, 200), RGBA(0, 0, 0, 0), RGBA(228, 69, 69, 200), RGBA(0, 0, 0, 0));
+	Wave::Setup(Config::GetU32(Config::WAVE_A_TOP), Config::GetU32(Config::WAVE_A_BOTTOM), Config::GetU32(Config::WAVE_B_TOP), Config::GetU32(Config::WAVE_B_BOTTOM));
 
-	OSL_IMAGE *wall = oslLoadImageFilePNG("WALL.PNG", OSL_IN_VRAM, OSL_PF_5650);
+	OSL_IMAGE *wall = oslLoadImageFilePNG("WALL.PNG", OSL_IN_VRAM, OSL_PF_8888);
+
+	OSL_FONT *mainFont = oslLoadIntraFontFile("FNTLT.PGF", INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8);
+	oslIntraFontSetStyle(mainFont, 0.8f, RGB(255,255,255), RGB(30,30,30), 0);
+	oslSetFont(mainFont);
 
 	pspDebugScreenPrintf("Resources Loaded...");
+
+	oslStartDrawing();
+	oslClearScreen(RGB(0, 0, 0));
+
+	sections[0]->LoadResources();
 
 	//Menu Loop
 	while (!ShouldExit)
@@ -119,10 +133,10 @@ char* Menu::Start()
 		}
 		else{
 			Wave::Update();
-			//sections[curSectId]->Update(0, 0);
+			if(sectId > curSectId)sections[curSectId]->Update(0, 0);
 
 			Wave::Render();
-			//sections[curSectId]->Render(0, 0);
+			if(sectId > curSectId)sections[curSectId]->Render(0, 0);
 		}
 
 		oslEndDrawing();
@@ -132,6 +146,7 @@ char* Menu::Start()
 	}
 
 	//Free Resources
+	sections[curSectId]->UnloadResources();
 
 	return toLaunchPath;
 }

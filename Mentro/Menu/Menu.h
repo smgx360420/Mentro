@@ -3,6 +3,7 @@
 #include <pspsdk.h>
 #include "Section.h"
 #include "../Common.h"
+#include "../Config/Config.h"
 #include "Wave.h"
 #include <stdlib.h>
 

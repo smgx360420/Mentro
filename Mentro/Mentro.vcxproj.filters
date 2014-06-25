@@ -19,6 +19,12 @@
     <Filter Include="Header Files\Menu">
       <UniqueIdentifier>{69eab002-438b-40ae-b44c-daa8f6f972de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Config">
+      <UniqueIdentifier>{aa14a2f0-199e-40cf-a3d2-d59e6fadafda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Config">
+      <UniqueIdentifier>{b0118f7b-90a0-4619-93c0-f91c08fd46b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
@@ -37,10 +43,16 @@
     <ClCompile Include="Menu\Wave.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="Menu\MainSection.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Menu\Section.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Config\Config.cpp">
+      <Filter>Source Files\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu\GameSelector.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu\MainSection.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,8 +72,14 @@
     <ClInclude Include="Menu\Wave.h">
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
+    <ClInclude Include="Config\Config.h">
+      <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu\GameSelector.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
     <ClInclude Include="Menu\MainSection.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

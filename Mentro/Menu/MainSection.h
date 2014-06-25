@@ -1,5 +1,7 @@
 #pragma once
 #include "Section.h"
+#include "../Common.h"
+#include "Menu.h"
 
 class MainSection : public Section
 {

@@ -6,16 +6,16 @@ u16 waveProgression;
 
 void Wave::Render()
 {
-	for (int x = 0; x <= 480; x+=2)
+	for (int x = 0; x <= 480; x++)
 	{
 		int y = 30 * oslSin(waveProgression/4 + x, 1) + 100;
 		int y2 = 50 * oslSin(waveProgression / 2 + x/2, 1) + 100;
 
-		oslDrawGradientRect(x, y2 - 20, x + 2, y2, waveBottomA, waveBottomA, waveTopA, waveTopA);
-		oslDrawGradientRect(x, y2, x + 2, y2 + 100, waveTopA, waveTopA, waveBottomA, waveBottomA);
+		//oslDrawGradientRect(x, y2 - 40, x + 1, y2, waveBottomA, waveBottomA, waveTopA, waveTopA);
+		oslDrawGradientRect(x, y2, x + 1, y2 + 100, waveTopA, waveTopA, waveBottomA, waveBottomA);
 
-		oslDrawGradientRect(x, y - 20 , x + 2, y, waveBottomB, waveBottomB, waveTopB, waveTopB);
-		oslDrawGradientRect(x, y, x + 2, y + 100, waveTopB, waveTopB, waveBottomB, waveBottomB);
+		//oslDrawGradientRect(x, y - 40 , x + 1, y, waveBottomB, waveBottomB, waveTopB, waveTopB);
+		oslDrawGradientRect(x, y, x + 1, y + 100, waveTopB, waveTopB, waveBottomB, waveBottomB);
 	}
 }
 

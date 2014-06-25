@@ -61,7 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Callbacks.cpp" />
+    <ClCompile Include="Config\Config.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu\GameSelector.cpp" />
     <ClCompile Include="Menu\MainSection.cpp" />
     <ClCompile Include="Menu\Menu.cpp" />
     <ClCompile Include="Menu\Section.cpp" />
@@ -70,6 +72,8 @@
   <ItemGroup>
     <ClInclude Include="Callbacks.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Config\Config.h" />
+    <ClInclude Include="Menu\GameSelector.h" />
     <ClInclude Include="Menu\MainSection.h" />
     <ClInclude Include="Menu\Menu.h" />
     <ClInclude Include="Menu\Section.h" />

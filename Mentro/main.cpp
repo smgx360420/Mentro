@@ -2,11 +2,13 @@
 #include "Callbacks.h"
 #include "Menu\Menu.h"
 #include "Menu\MainSection.h"
+#include "Menu\GameSelector.h"
 #include "Menu\Section.h"
+#include "Config\Config.h"
 
 //TODO Change the Name of the homebrew
 PSP_MODULE_INFO("Mentro", 0, 1, 0);
-PSP_MAIN_THREAD_ATTR(PSP_THREAD_ATTR_USER);
+PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 
 
 char app_start_path[256];
@@ -81,15 +83,28 @@ int main(int argc, char *argv[])
 
 	pspDebugScreenPrintf("Starting Menu...");
 
-	Menu::setAppPath(argv[0]);
+	if(argc > 0)Menu::setAppPath(argv[0]);
+
+	if (Config::LoadConfig() < 0){
+
+		//If we failed to open the config, recreate a default config
+		Config::LoadDefaultConfig();
+		Config::SaveConfig();
+	}
 
 	//Declare, Initialize and register the initial section 0 - the main menu
 	MainSection mainSection;
 	Section *mainSectionPTR = &mainSection;
 	Menu::RegisterSection(mainSectionPTR);
 
+	GameSelector gameSection;
+	Section *gameSectionPTR = &gameSection;
+	Menu::RegisterSection(gameSectionPTR);
+
 	char* appToLaunchPath = Menu::Start();
 
+	Config::SaveConfig();
+	Config::CloseConfig();
 
 #ifdef VHBL
 	strcpy(ebootPath,appToLaunchPath);
