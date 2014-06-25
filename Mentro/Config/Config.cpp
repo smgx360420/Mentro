@@ -6,7 +6,6 @@ public:
 	u32 WAVE_A_BOTTOM;
 	u32 WAVE_B_TOP;
 	u32 WAVE_B_BOTTOM;
-
 } configSettings;
 
 SceUID fid = NULL;

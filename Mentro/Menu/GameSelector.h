@@ -12,6 +12,9 @@ public:
 
 	virtual OSL_IMAGE* GetSplashIcon();
 
+	virtual int GetSplashX();
+	virtual int GetSplashY();
+
 	virtual void UnloadResources();
 	virtual void LoadResources();
 };

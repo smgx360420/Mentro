@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Config">
       <UniqueIdentifier>{b0118f7b-90a0-4619-93c0-f91c08fd46b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\File">
+      <UniqueIdentifier>{4cdd0a6a-7266-4047-b542-2ffc322d59ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\File">
+      <UniqueIdentifier>{538da91d-f220-40b9-a077-61a2910994f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
@@ -55,6 +61,15 @@
     <ClCompile Include="Menu\MainSection.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="File\FileManager.cpp">
+      <Filter>Source Files\File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\PBPParse.cpp">
+      <Filter>Source Files\File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\SFOParse.cpp">
+      <Filter>Source Files\File</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -80,6 +95,15 @@
     </ClInclude>
     <ClInclude Include="Menu\MainSection.h">
       <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="File\FileManager.h">
+      <Filter>Header Files\File</Filter>
+    </ClInclude>
+    <ClInclude Include="File\PBPParse.h">
+      <Filter>Header Files\File</Filter>
+    </ClInclude>
+    <ClInclude Include="File\SFOParse.h">
+      <Filter>Header Files\File</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

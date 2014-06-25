@@ -1,5 +1,5 @@
 TARGET = MENTRO
-OBJS   = main.o Callbacks.o Menu/Menu.o Menu/Wave.o Menu/MainSection.o Menu/Section.o Menu/GameSelector.o Config/Config.o
+OBJS   = main.o Callbacks.o Menu/Menu.o Menu/Wave.o Menu/MainSection.o Menu/Section.o Menu/GameSelector.o Config/Config.o File/FileManager.o
  
 INCDIR   =
 CFLAGS   = -G0 -Wall -O2

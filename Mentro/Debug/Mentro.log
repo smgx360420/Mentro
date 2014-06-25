@@ -1,15 +1,9 @@
-﻿Build started 6/24/2014 5:58:28 PM.
+﻿Build started 6/25/2014 2:08:24 AM.
      1>Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" on node 2 (Build target(s)).
      1>Build:
          vsmake
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Menu/Menu.o Menu/Menu.cpp
-     1>Menu/Menu.cpp(3): warning : ignoring #pragma region
-     1>Menu/Menu.cpp(15): warning : ignoring #pragma endregion
-     1>Menu/Menu.cpp(70): warning : ignoring #pragma region
-     1>Menu/Menu.cpp(88): warning : ignoring #pragma endregion
-         Menu/Menu.cpp: In static member function 'static char* Menu::Start()':
-     1>Menu/Menu.cpp(107): warning : deprecated conversion from string constant to 'char*'
-         psp-gcc -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D_PSP_FW_VERSION=150  -Llibs -L. -LC:/pspsdk/psp/sdk/lib   main.o Callbacks.o Menu/Menu.o Menu/Wave.o Menu/MainSection.o Menu/Section.o Menu/GameSelector.o Config/Config.o -losl -lpng -lz -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum  -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan -lpspnet_adhocmatching -lpspnet_adhoc -lpspnet_adhocctl -lm -ljpeg -lpspdebug -lpspdisplay -lpspge -lpspctrl -lpspsdk -lc -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpsputility -lpspuser -lpspkernel -o MENTRO.elf
+         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o File/FileManager.o File/FileManager.cpp
+         psp-gcc -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D_PSP_FW_VERSION=150  -Llibs -L. -LC:/pspsdk/psp/sdk/lib   main.o Callbacks.o Menu/Menu.o Menu/Wave.o Menu/MainSection.o Menu/Section.o Menu/GameSelector.o Config/Config.o File/FileManager.o -losl -lpng -lz -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum  -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan -lpspnet_adhocmatching -lpspnet_adhoc -lpspnet_adhocctl -lm -ljpeg -lpspdebug -lpspdisplay -lpspge -lpspctrl -lpspsdk -lc -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpsputility -lpspuser -lpspkernel -o MENTRO.elf
          psp-fixup-imports MENTRO.elf
          psp-strip MENTRO.elf -o MENTRO_strip.elf
          pack-pbp EBOOT.PBP PARAM.SFO NULL  \
@@ -21,11 +15,11 @@
          [3]          0 bytes | NULL
          [4]          0 bytes | NULL
          [5]          0 bytes | NULL
-         [6]     304616 bytes | MENTRO_strip.elf
+         [6]     305848 bytes | MENTRO_strip.elf
          [7]          0 bytes | NULL
          C:/pspsdk/bin/rm -f MENTRO_strip.elf
      1>Done Building Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.28
+Time Elapsed 00:00:01.19

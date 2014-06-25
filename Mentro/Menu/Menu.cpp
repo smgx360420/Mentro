@@ -117,6 +117,9 @@ char* Menu::Start()
 
 	sections[0]->LoadResources();
 
+	//Enable bilinear filtering
+	oslSetBilinearFilter(1);
+
 	//Menu Loop
 	while (!ShouldExit)
 	{
@@ -124,7 +127,7 @@ char* Menu::Start()
 
 		oslStartDrawing();
 
-		oslDrawImageXY(wall, 0, 0);
+		oslDrawImageSimpleXY(wall, 0, 0);
 
 		//If an update is pending, transition
 		if (updatePending)

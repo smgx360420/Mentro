@@ -62,6 +62,9 @@
   <ItemGroup>
     <ClCompile Include="Callbacks.cpp" />
     <ClCompile Include="Config\Config.cpp" />
+    <ClCompile Include="File\FileManager.cpp" />
+    <ClCompile Include="File\PBPParse.cpp" />
+    <ClCompile Include="File\SFOParse.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu\GameSelector.cpp" />
     <ClCompile Include="Menu\MainSection.cpp" />
@@ -73,6 +76,9 @@
     <ClInclude Include="Callbacks.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Config\Config.h" />
+    <ClInclude Include="File\FileManager.h" />
+    <ClInclude Include="File\PBPParse.h" />
+    <ClInclude Include="File\SFOParse.h" />
     <ClInclude Include="Menu\GameSelector.h" />
     <ClInclude Include="Menu\MainSection.h" />
     <ClInclude Include="Menu\Menu.h" />

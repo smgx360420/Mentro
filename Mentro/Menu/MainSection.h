@@ -2,6 +2,7 @@
 #include "Section.h"
 #include "../Common.h"
 #include "Menu.h"
+#include <psprtc.h>
 
 class MainSection : public Section
 {

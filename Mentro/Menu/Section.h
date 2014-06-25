@@ -13,6 +13,8 @@ public:
 	virtual void Render(u32 xPos, u32 yPos);
 
 	virtual OSL_IMAGE* GetSplashIcon();
+	virtual int GetSplashX();
+	virtual int GetSplashY();
 
 	virtual void UnloadResources();
 	virtual void LoadResources();
