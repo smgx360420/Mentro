@@ -5,6 +5,7 @@
 #include "Menu\GameSelector.h"
 #include "Menu\Section.h"
 #include "Config\Config.h"
+#include "File\PBPParse.h"
 
 //TODO Change the Name of the homebrew
 PSP_MODULE_INFO("Mentro", 0, 1, 0);
@@ -91,6 +92,9 @@ int main(int argc, char *argv[])
 		Config::LoadDefaultConfig();
 		Config::SaveConfig();
 	}
+
+	PBPParse parser;
+	parser.Parse("ms0:/PSP/GAME/BinTester/EBOOT.PBP");
 
 	//Declare, Initialize and register the initial section 0 - the main menu
 	MainSection mainSection;

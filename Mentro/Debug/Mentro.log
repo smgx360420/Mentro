@@ -1,25 +1,25 @@
-﻿Build started 6/25/2014 2:08:24 AM.
+﻿Build started 6/25/2014 8:44:48 PM.
      1>Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" on node 2 (Build target(s)).
      1>Build:
          vsmake
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o File/FileManager.o File/FileManager.cpp
-         psp-gcc -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D_PSP_FW_VERSION=150  -Llibs -L. -LC:/pspsdk/psp/sdk/lib   main.o Callbacks.o Menu/Menu.o Menu/Wave.o Menu/MainSection.o Menu/Section.o Menu/GameSelector.o Config/Config.o File/FileManager.o -losl -lpng -lz -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum  -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan -lpspnet_adhocmatching -lpspnet_adhoc -lpspnet_adhocctl -lm -ljpeg -lpspdebug -lpspdisplay -lpspge -lpspctrl -lpspsdk -lc -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpsputility -lpspuser -lpspkernel -o MENTRO.elf
+         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o File/PBPParse.o File/PBPParse.cpp
+         psp-gcc -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D_PSP_FW_VERSION=150  -Llibs -L. -LC:/pspsdk/psp/sdk/lib   main.o Callbacks.o Menu/Menu.o Menu/Wave.o Menu/MainSection.o Menu/Section.o Menu/GameSelector.o Config/Config.o File/FileManager.o File/PBPParse.o File/SFOParse.o -losl -lpng -lz -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum  -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan -lpspnet_adhocmatching -lpspnet_adhoc -lpspnet_adhocctl -lm -ljpeg -lpspdebug -lpspdisplay -lpspge -lpspctrl -lpspsdk -lc -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpsputility -lpspuser -lpspkernel -o MENTRO.elf
          psp-fixup-imports MENTRO.elf
          psp-strip MENTRO.elf -o MENTRO_strip.elf
-         pack-pbp EBOOT.PBP PARAM.SFO NULL  \
-         	NULL NULL NULL  \
+         pack-pbp EBOOT.PBP PARAM.SFO LGDEF.PNG  \
+         	NULL NULL WALL.PNG  \
          	NULL  MENTRO_strip.elf NULL
          [0]        408 bytes | PARAM.SFO
-         [1]          0 bytes | NULL
+         [1]       5789 bytes | LGDEF.PNG
          [2]          0 bytes | NULL
          [3]          0 bytes | NULL
-         [4]          0 bytes | NULL
+         [4]      83310 bytes | WALL.PNG
          [5]          0 bytes | NULL
-         [6]     305848 bytes | MENTRO_strip.elf
+         [6]     306572 bytes | MENTRO_strip.elf
          [7]          0 bytes | NULL
          C:/pspsdk/bin/rm -f MENTRO_strip.elf
      1>Done Building Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.19
+Time Elapsed 00:00:04.14
