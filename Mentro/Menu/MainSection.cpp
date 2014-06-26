@@ -1,15 +1,15 @@
 #include "MainSection.h"
 
 OSL_IMAGE *recentApp = NULL;
+char Name[256] = "No Recent App";
+char ID[16] = "-";
 
 //All updates must be relative to the 'world' coordinates supplied
 void MainSection::Update(u32 xPos, u32 yPos){
-
 }
 
 //All renders must be relative to the 'world' coordinates supplied
 void MainSection::Render(u32 xPos, u32 yPos){
-	//oslDrawRect(xPos, yPos, xPos + 240, yPos + 272, RGBA(0, 255, 0, 255));
 	oslDrawString(xPos + 20, yPos + 20, "Main Menu");
 
 	//Show the current time
@@ -21,6 +21,7 @@ void MainSection::Render(u32 xPos, u32 yPos){
 
 	//Draw the recent app icon
 	oslDrawImageSimpleXY(recentApp, xPos + 20, yPos + 40);
+	oslDrawStringf(xPos + 20, yPos + 180, Name);
 
 	for (u8 c = 1; c < MAX_SECTIONS; c++){
 		Section *sect = Menu::getSection(c);
@@ -43,5 +44,14 @@ void MainSection::UnloadResources(){
 }
 
 void MainSection::LoadResources(){
-	recentApp = oslLoadImageFilePNG("LGDEF.PNG", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	//Load the most recent app icon to show
+	if (FileManager::FileExists("ms0:/TMP/ICON0.PNG")) recentApp = oslLoadImageFilePNG("ms0:/TMP/ICON0.PNG", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	else recentApp = oslLoadImageFilePNG("LGDEF.PNG", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+
+	if (FileManager::FileExists("ms0:/TMP/PARAM.SFO")){
+		SFOParse sfo;
+		sfo.Parse("ms0:/TMP/PARAM.SFO");
+		strcpy(Name, sfo.GetName());
+		strcpy(ID, sfo.GetID());
+	}
 }

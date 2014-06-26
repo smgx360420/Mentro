@@ -1,5 +1,10 @@
 #pragma once
 #include "Section.h"
+#include "../File/PBPParse.h"
+#include "../Config/Config.h"
+#include "../Common.h"
+#include "../File/FileManager.h"
+
 class GameSelector :
 	public Section
 {

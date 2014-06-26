@@ -1,6 +1,7 @@
 #include "FileManager.h"
 
 SceUID dirId = NULL;
+SceIoDirent dirent;
 int dirStatus = 1;
 char filename[256];
 
@@ -29,7 +30,7 @@ int FileManager::FileExists(const char* path)
 		return 1;
 	}
 	else {
-		return -1;
+		return 0;
 	}
 }
 
@@ -37,6 +38,8 @@ int FileManager::OpenDir(const char* path)
 {
 	dirStatus = 1;
 	dirId = sceIoDopen(path);
+	sceIoDread(dirId, &dirent);
+	sceIoDread(dirId, &dirent);
 	return dirId;
 }
 
@@ -51,18 +54,25 @@ int FileManager::CloseDir()
 	return 0;
 }
 
+int FileManager::Next()
+{
+	if (dirId > NULL && dirStatus > 0)
+	{
+		dirStatus = sceIoDread(dirId, &dirent);
+	}
+	return dirStatus;
+}
+
 char* FileManager::GetNextFileName()
 {
 	if (dirId > NULL && dirStatus > 0)
 	{
-		SceIoDirent dirent;
-		dirStatus = sceIoDread(dirId, &dirent);
 		if(dirStatus >= 0)strcpy(filename, dirent.d_name);
 	}
 	return filename;
 }
 
-int FileManager::NextFileExists()
+int FileManager::IsNextDir()
 {
-	return dirStatus;
+	return FIO_S_ISDIR(dirent.d_stat.st_mode);
 }

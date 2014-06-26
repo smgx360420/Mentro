@@ -118,7 +118,7 @@ char* Menu::Start()
 	sections[0]->LoadResources();
 
 	//Enable bilinear filtering
-	oslSetBilinearFilter(1);
+	//oslSetBilinearFilter(1);
 
 	//Menu Loop
 	while (!ShouldExit)

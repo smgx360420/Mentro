@@ -93,9 +93,6 @@ int main(int argc, char *argv[])
 		Config::SaveConfig();
 	}
 
-	PBPParse parser;
-	parser.Parse("ms0:/PSP/GAME/BinTester/EBOOT.PBP");
-
 	//Declare, Initialize and register the initial section 0 - the main menu
 	MainSection mainSection;
 	Section *mainSectionPTR = &mainSection;

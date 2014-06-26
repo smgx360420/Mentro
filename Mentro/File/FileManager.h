@@ -10,7 +10,8 @@ public:
 	static int FileExists(const char *filename);
 	static int OpenDir(const char *path);
 	static int CloseDir();
-	static int NextFileExists();
+	static int Next();
 	static char* GetNextFileName();
+	static int IsNextDir();
 };
 

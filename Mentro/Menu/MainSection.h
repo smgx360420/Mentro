@@ -2,6 +2,8 @@
 #include "Section.h"
 #include "../Common.h"
 #include "Menu.h"
+#include "../File/SFOParse.h"
+#include "../File/FileManager.h"
 #include <psprtc.h>
 
 class MainSection : public Section
