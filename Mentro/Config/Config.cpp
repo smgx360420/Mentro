@@ -6,6 +6,7 @@ public:
 	u32 WAVE_A_BOTTOM;
 	u32 WAVE_B_TOP;
 	u32 WAVE_B_BOTTOM;
+	u32 SELECTION_COL;
 } configSettings;
 
 SceUID fid = NULL;
@@ -50,6 +51,7 @@ int Config::LoadDefaultConfig()
 	Settings.WAVE_A_BOTTOM = RGBA(255, 255, 255, 0);
 	Settings.WAVE_B_TOP = RGBA(228, 69, 69, 100);
 	Settings.WAVE_B_BOTTOM = RGBA(255, 255, 255, 0);
+	Settings.SELECTION_COL = RGBA(255, 255, 255, 255);
 }
 
 u32 Config::GetU32(Config::ConfigParams params)
@@ -67,6 +69,9 @@ u32 Config::GetU32(Config::ConfigParams params)
 		break;
 	case Config::WAVE_B_TOP:
 		return Settings.WAVE_B_TOP;
+		break;
+	case Config::SELECTION_COL:
+		return Settings.SELECTION_COL;
 		break;
 	}
 }

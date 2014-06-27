@@ -39,7 +39,7 @@ void Menu::TransitionSection(u8 sectToTransition)
 Section* Menu::getSection(u8 id)
 {
 	if (id < sectId)
-	return sections[id];
+		return sections[id];
 	else return NULL;
 }
 
@@ -87,6 +87,18 @@ int Menu::getExtraInfo()
 }
 #pragma endregion
 
+OSL_FONT *mainFont, *jp;
+
+void Menu::SelectFont(char *str)
+{
+	if (strchr(str, 0xE3) != NULL){
+		oslSetFont(jp);
+	}
+	else{
+		oslSetFont(mainFont);
+	}
+}
+
 char* Menu::Start()
 {
 	//Load Resources
@@ -106,8 +118,11 @@ char* Menu::Start()
 
 	OSL_IMAGE *wall = oslLoadImageFilePNG("WALL.PNG", OSL_IN_VRAM, OSL_PF_8888);
 
-	OSL_FONT *mainFont = oslLoadIntraFontFile("FNTLT.PGF", INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8);
-	oslIntraFontSetStyle(mainFont, 0.8f, RGB(255,255,255), RGB(30,30,30), 0);
+	mainFont = oslLoadIntraFontFile("FNTLT.PGF", INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8);
+	jp = oslLoadIntraFontFile("flash0:/font/jpn0.pgf", INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8);
+
+	oslIntraFontSetStyle(mainFont, 0.8f, RGB(255, 255, 255), RGB(30, 30, 30), 0);
+	oslIntraFontSetStyle(jp, 0.6f, RGB(255, 255, 255), RGB(30, 30, 30), 0);
 	oslSetFont(mainFont);
 
 	pspDebugScreenPrintf("Resources Loaded...");
@@ -135,14 +150,22 @@ char* Menu::Start()
 			updatePending = TransitionEffect();
 		}
 		else{
+
+			oslReadKeys();
+
+			if (osl_keys->pressed.L && osl_keys->pressed.R)
+			{
+				oslWriteImageFilePNG(oslGetDrawBuffer(), "ms0:/SCREENSHOT.PNG", 0);
+			}
 			Wave::Update();
-			if(sectId > curSectId)sections[curSectId]->Update(0, 0);
+			if (sectId > curSectId)sections[curSectId]->Update(0, 0);
 
 			Wave::Render();
-			if(sectId > curSectId)sections[curSectId]->Render(0, 0);
+			if (sectId > curSectId)sections[curSectId]->Render(0, 0);
 		}
 
 		oslEndDrawing();
+
 
 	needToSkip:
 		shudSkip = oslSyncFrame();

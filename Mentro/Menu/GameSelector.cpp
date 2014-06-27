@@ -54,7 +54,7 @@ OSL_IMAGE* GameSelector::GetSplashIcon(){
 
 int GameSelector::GetSplashX()
 {
-	return 153;
+	return 40;
 }
 
 int GameSelector::GetSplashY()

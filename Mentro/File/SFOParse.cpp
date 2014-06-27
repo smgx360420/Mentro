@@ -27,6 +27,11 @@ void SFOParse::Parse(const char *path)
 				sceIoLseek(sfoFile, header.dataTableOff + entry.DataOff, PSP_SEEK_SET);
 				sceIoRead(sfoFile, Name, entry.maxLength);
 			}
+			else if (strcmp(tmp, "REGION") == 0)
+			{
+				sceIoLseek(sfoFile, header.dataTableOff + entry.DataOff, PSP_SEEK_SET);
+				sceIoRead(sfoFile, &region, entry.maxLength);
+			}
 
 			sceIoLseek(sfoFile, curOff, PSP_SEEK_SET);	//Return to the index table entry offset
 		}
@@ -37,3 +42,7 @@ void SFOParse::Parse(const char *path)
 
 char *SFOParse::GetID(){ return ID; }
 char *SFOParse::GetName(){ return Name; }
+int SFOParse::GetEncoding()
+{
+	return region;
+}

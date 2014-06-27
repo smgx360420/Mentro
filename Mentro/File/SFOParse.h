@@ -23,10 +23,12 @@ public:
 	}IndexTable;
 	char *GetName();
 	char *GetID();
+	int GetEncoding();
 private:
 	Header header;
 	IndexTable entry;
 	char Name[256];
 	char ID[16];
+	int region;
 };
 

@@ -9,7 +9,8 @@ public:
 		WAVE_A_TOP = 0,
 		WAVE_A_BOTTOM,
 		WAVE_B_TOP,
-		WAVE_B_BOTTOM
+		WAVE_B_BOTTOM,
+		SELECTION_COL
 	}ConfigParams;
 
 	static int LoadConfig();
