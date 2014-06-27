@@ -70,6 +70,10 @@ void MainSection::Render(u32 xPos, u32 yPos){
 			oslDrawImageXY(sect->GetSplashIcon(), xPos + sect->GetSplashX() + 128, sect->GetSplashY() + yPos);
 			if (c == selectedID)
 				drawRect(xPos + 128 + sect->GetSplashX(), yPos + sect->GetSplashY(), oslGetImageWidth(sect->GetSplashIcon()), oslGetImageHeight(sect->GetSplashIcon()));
+			if (c == selectedID && osl_keys->pressed.cross)
+			{
+				Menu::TransitionSection(c);
+			}
 		}
 		else{
 			break;
@@ -91,7 +95,7 @@ void MainSection::LoadResources(){
 	else recentApp = oslLoadImageFilePNG("LGDEF.PNG", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 
 	//Load the most recent app icon to show
-	if (FileManager::FileExists("ms0:/TMP/PIC1.PNG")) recentPic1 = oslLoadImageFilePNG("ms0:/TMP/PIC1.PNG", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	if (FileManager::FileExists("ms0:/TMP/PIC1SC.PNG")) recentPic1 = oslLoadImageFilePNG("ms0:/TMP/PIC1SC.PNG", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 	else recentPic1 = NULL;
 
 	if (FileManager::FileExists("ms0:/TMP/PARAM.SFO")){

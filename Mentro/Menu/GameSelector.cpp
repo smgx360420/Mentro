@@ -64,7 +64,7 @@ int GameSelector::GetSplashY()
 
 void GameSelector::Render(u32 xPos, u32 yPos)
 {
-
+	oslDrawImageSimpleXY(eboots[0].icon, xPos + 40, yPos + 40);
 }
 
 

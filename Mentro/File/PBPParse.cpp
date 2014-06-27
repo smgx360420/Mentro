@@ -38,6 +38,10 @@ void PBPParse::Parse(const char *file){
 			sceIoClose(picFile);
 			if (header.snd - header.pic1 > 0){
 				pic = oslLoadImageFilePNG("ms0:/TMP/PIC1.PNG", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+
+				OSL_IMAGE *tmpPic = oslScaleImageCreate(pic, OSL_IN_RAM, 128, 128, OSL_PF_8888);
+				oslWriteImageFilePNG(tmpPic, "ms0:/TMP/PIC1SC.PNG", 0);
+				oslDeleteImage(tmpPic);
 			}
 			free(temp);
 

@@ -5,19 +5,28 @@ OSL_COLOR waveTopB, waveBottomB, wTBNxt, wBBNxt, wTBTrans, wBBTrans;
 u16 waveProgression;
 float progress = 0.0f;
 
-#define INTERPOLATE_BYTE(a, b, x) (u32)((float)(1.0f-x) * (float)a + (x * (float)b))
+
+u8 INTERPOLATE_BYTE(u8 ac, u8 bc, float x)
+{
+	float a = ac;
+	float b = bc;
+
+	int answer = (int)( ((1.0f - x) * a) + (x * b) );
+
+	return (u8)answer;
+}
 
 u32 interpolate(u32 colA, u32 colB, float x)
 {
-	char colAR = colA & 0x000000ff;
-	char colAG = (colA & 0x0000ff00) >> 8;
-	char colAB = (colA & 0x00ff0000) >> 16;
-	char colAA = (colA & 0xff000000) >> 24;
+	u8 colAR = colA & 0x000000ff;
+	u8 colAG = (colA & 0x0000ff00) >> 8;
+	u8 colAB = (colA & 0x00ff0000) >> 16;
+	u8 colAA = (colA & 0xff000000) >> 24;
 
-	char colBR = colB & 0x000000ff;
-	char colBG = (colB & 0x0000ff00) >> 8;
-	char colBB = (colB & 0x00ff0000) >> 16;
-	char colBA = (colB & 0xff000000) >> 24;
+	u8 colBR = colB & 0x000000ff;
+	u8 colBG = (colB & 0x0000ff00) >> 8;
+	u8 colBB = (colB & 0x00ff0000) >> 16;
+	u8 colBA = (colB & 0xff000000) >> 24;
 
 	return RGBA(INTERPOLATE_BYTE(colAR, colBR, x), INTERPOLATE_BYTE(colAG, colBG, x), INTERPOLATE_BYTE(colAB, colBB, x), INTERPOLATE_BYTE(colAA, colBA, x));
 }
@@ -38,24 +47,13 @@ void Wave::Init()
 void Wave::Render()
 {
 	oslSetBilinearFilter(1);
-	for (int x = 0; x <= 480; x++)
+	for (int x = 0; x <= 480; x+=2)
 	{
 		int y = int(30 * oslSin(waveProgression/4 + x, 1) + 100 + .5);
 		int y2 = int(50 * oslSin(waveProgression / 2 + x/2, 1) + 100 + .5);
 
-		oslDrawStringf(50, 200, "%#010x", waveTopA);
-
-		//oslDrawGradientRect(x, y2 - 40, x + 1, y2, waveBottomA, waveBottomA, waveTopA, waveTopA);
-		//oslDrawGradientRect(x, y2 - 1, x + 1, y2 + 100 - 1, wTATrans, wTATrans, wBATrans, wBATrans);
-
-		//oslDrawGradientRect(x, y - 40 , x + 1, y, waveBottomB, waveBottomB, waveTopB, waveTopB);
-		//oslDrawGradientRect(x, y - 1, x + 1, y + 100 - 1, wTBTrans, wTBTrans, wBBTrans, wBBTrans);
-
-		//oslDrawGradientRect(x, y2 - 40, x + 1, y2, waveBottomA, waveBottomA, waveTopA, waveTopA);
-		oslDrawGradientRect(x, y2, x + 1, y2 + 100, waveTopA, waveTopA, waveBottomA, waveBottomA);
-
-		//oslDrawGradientRect(x, y - 40 , x + 1, y, waveBottomB, waveBottomB, waveTopB, waveTopB);
-		oslDrawGradientRect(x, y, x + 1, y + 100, waveTopB, waveTopB, waveBottomB, waveBottomB);
+		oslDrawGradientRect(x, y2, x + 2, y2 + 100, waveTopA, waveTopA, waveBottomA, waveBottomA);
+		oslDrawGradientRect(x, y, x + 2, y + 100, waveTopB, waveTopB, waveBottomB, waveBottomB);
 	}
 	oslSetBilinearFilter(0);
 }
@@ -64,8 +62,8 @@ void Wave::Update()
 {
 	waveProgression++;
 	if (waveProgression >= 360 * 4)waveProgression = 0;
-	//progress += 0.00392156862f * 4;
-	progress += 0.1f;
+	progress += 0.00392156862f;
+	//progress += 0.1f;
 
 	waveTopA = interpolate(waveTopA, wTANxt, progress);
 	waveTopB = interpolate(waveTopB, wTBNxt, progress);
