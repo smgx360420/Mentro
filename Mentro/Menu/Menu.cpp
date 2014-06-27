@@ -109,12 +109,13 @@ char* Menu::Start()
 	oslSetQuitOnLoadFailure(1);
 	oslSetKeyAutorepeatInit(40);
 	oslSetKeyAutorepeatInterval(10);
+	//oslSetFramerate(60);
+	//oslSetFrameskip(1);
 
 	pspDebugScreenPrintf("Initialized OSLib...");
 
 	u32 shudSkip = 0;
 
-	Wave::Setup(Config::GetU32(Config::WAVE_A_TOP), Config::GetU32(Config::WAVE_A_BOTTOM), Config::GetU32(Config::WAVE_B_TOP), Config::GetU32(Config::WAVE_B_BOTTOM));
 
 	OSL_IMAGE *wall = oslLoadImageFilePNG("WALL.PNG", OSL_IN_VRAM, OSL_PF_8888);
 
@@ -130,44 +131,45 @@ char* Menu::Start()
 	oslStartDrawing();
 	oslClearScreen(RGB(0, 0, 0));
 
+	Wave::Init();
+
 	sections[0]->LoadResources();
 
-	//Enable bilinear filtering
-	//oslSetBilinearFilter(1);
 
 	//Menu Loop
 	while (!ShouldExit)
 	{
-		if (shudSkip)goto needToSkip;
+		if (!shudSkip){
 
-		oslStartDrawing();
+			oslStartDrawing();
 
-		oslDrawImageSimpleXY(wall, 0, 0);
+			oslDrawImageSimpleXY(wall, 0, 0);
 
-		//If an update is pending, transition
-		if (updatePending)
-		{
-			updatePending = TransitionEffect();
-		}
-		else{
-
-			oslReadKeys();
-
-			if (osl_keys->pressed.L && osl_keys->pressed.R)
+			//If an update is pending, transition
+			if (updatePending)
 			{
-				oslWriteImageFilePNG(oslGetDrawBuffer(), "ms0:/SCREENSHOT.PNG", 0);
+				updatePending = TransitionEffect();
 			}
-			Wave::Update();
-			if (sectId > curSectId)sections[curSectId]->Update(0, 0);
+			else{
 
-			Wave::Render();
-			if (sectId > curSectId)sections[curSectId]->Render(0, 0);
+				oslReadKeys();
+
+				if (osl_keys->pressed.L && osl_keys->pressed.R)
+				{
+					oslWriteImageFilePNG(oslGetDrawBuffer(), "ms0:/SCREENSHOT.PNG", 0);
+				}
+				Wave::Update();
+				if (sectId > curSectId)sections[curSectId]->Update(0, 0);
+
+				Wave::Render();
+				if (sectId > curSectId)sections[curSectId]->Render(0, 0);
+			}
+
+			oslEndDrawing();
+
 		}
 
-		oslEndDrawing();
-
-
-	needToSkip:
+		oslEndFrame();
 		shudSkip = oslSyncFrame();
 	}
 
