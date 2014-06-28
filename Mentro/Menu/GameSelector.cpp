@@ -87,9 +87,9 @@ void GameSelector::Render(u32 xPos, u32 yPos)
 	//Draw the border around the selected item
 	oslDrawRect(xPos + getXPos(90 - angleWidth * selectedEntryID, 100), getYPos(90 - angleWidth * selectedEntryID, 100, 100), xPos + getXPos(90 - angleWidth * selectedEntryID, 100) + 64, getYPos(90 - angleWidth * selectedEntryID, 100, 100) + 64, Config::GetU32(Config::SELECTION_COL));
 
-	oslDrawFillRect(180, 120, 480, 200, RGB(0,0,0) );
+	oslDrawFillRect(xPos + 180, yPos + 120, xPos + 480, yPos + 200, RGB(0,0,0) );
 	Menu::SelectFont(eboots[selectedEntryID].sfo.GetName());
-	oslDrawString(190, 150, eboots[selectedEntryID].sfo.GetName());
+	oslDrawString(xPos + 190, yPos + 150, eboots[selectedEntryID].sfo.GetName());
 	Menu::SelectFont("LOL");
 
 }
