@@ -4,6 +4,7 @@
 #include "../Config/Config.h"
 #include "../Common.h"
 #include "../File/FileManager.h"
+#include "Menu.h"
 
 class GameSelector :
 	public Section

@@ -11,6 +11,7 @@ public:
 	void Parse(const char *file);
 	OSL_IMAGE* icon;
 	OSL_IMAGE* pic;
+	static void setDefaultUNKN();
 	SFOParse sfo;
 	typedef struct{
 		u8 Magic[4];

@@ -5,6 +5,7 @@
 #include "../Common.h"
 #include "../Config/Config.h"
 #include "Wave.h"
+#include "../File/PBPParse.h"
 #include <stdlib.h>
 
 class Menu

@@ -3,6 +3,8 @@
 OSL_IMAGE *splash = NULL;
 PBPParse eboots[MAX_GAMEENTRIES];
 int curEbootEntryNum = 0;
+float angleWidth = 0;
+int selectedEntryID = 0;
 
 void GameSelector::LoadResources()
 {
@@ -44,6 +46,18 @@ void GameSelector::LoadResources()
 		}
 
 	}
+
+	angleWidth = 180.0f / (float)(curEbootEntryNum - 1);
+}
+
+int getXPos(float angle, int length)
+{
+	return oslCosi(angle, length);
+}
+
+int getYPos(float angle, int length, int yPos)
+{
+	return yPos + oslSini(angle, length);
 }
 
 OSL_IMAGE* GameSelector::GetSplashIcon(){
@@ -64,14 +78,34 @@ int GameSelector::GetSplashY()
 
 void GameSelector::Render(u32 xPos, u32 yPos)
 {
-	oslDrawImageSimpleXY(eboots[0].icon, xPos + 40, yPos + 40);
+	for (int c = 0; c < curEbootEntryNum; c++){
+		if(eboots[c].icon != NULL)oslDrawImageSimpleXY(eboots[c].icon, xPos + getXPos(90 - angleWidth * c, 100), getYPos(90 - angleWidth * c, 100, 100));
+	}
+
+	if (eboots[selectedEntryID].icon != NULL)oslDrawImageSimpleXY(eboots[selectedEntryID].icon, xPos + getXPos(90 - angleWidth * selectedEntryID, 100), getYPos(90 - angleWidth * selectedEntryID, 100, 100));
+	
+	//Draw the border around the selected item
+	oslDrawRect(xPos + getXPos(90 - angleWidth * selectedEntryID, 100), getYPos(90 - angleWidth * selectedEntryID, 100, 100), xPos + getXPos(90 - angleWidth * selectedEntryID, 100) + 64, getYPos(90 - angleWidth * selectedEntryID, 100, 100) + 64, Config::GetU32(Config::SELECTION_COL));
+
+	oslDrawFillRect(180, 120, 480, 200, RGB(0,0,0) );
+	Menu::SelectFont(eboots[selectedEntryID].sfo.GetName());
+	oslDrawString(190, 150, eboots[selectedEntryID].sfo.GetName());
+	Menu::SelectFont("LOL");
+
 }
 
 
 
 void GameSelector::Update(u32 xPos, u32 yPos)
 {
+	//Return to main menu
+	if (osl_keys->pressed.circle)Menu::TransitionSection(0);
 
+	if (osl_keys->pressed.up)selectedEntryID++;
+	if (osl_keys->pressed.down)selectedEntryID--;
+
+	if (selectedEntryID < 0)selectedEntryID = 0;
+	if (selectedEntryID >= curEbootEntryNum)selectedEntryID = curEbootEntryNum - 1;
 }
 
 void GameSelector::UnloadResources()

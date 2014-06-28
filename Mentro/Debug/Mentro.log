@@ -1,56 +1,14 @@
-﻿Build started 6/27/2014 5:28:54 PM.
-     1>Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" on node 2 (Rebuild target(s)).
-     1>Rebuild:
-         vsmake clean && vsmake
-         C:/pspsdk/bin/rm -f MENTRO.elf  main.o Callbacks.o Menu/Menu.o Menu/Wave.o Menu/MainSection.o Menu/Section.o Menu/GameSelector.o Config/Config.o File/FileManager.o File/PBPParse.o File/SFOParse.o PARAM.SFO EBOOT.PBP EBOOT.PBP
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o main.o main.cpp
-         main.cpp: In function 'int main(int, char**)':
-     1>main.cpp(105): warning : unused variable 'appToLaunchPath'
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Callbacks.o Callbacks.cpp
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Menu/Menu.o Menu/Menu.cpp
-     1>Menu/Menu.cpp(3): warning : ignoring #pragma region
-     1>Menu/Menu.cpp(15): warning : ignoring #pragma endregion
-     1>Menu/Menu.cpp(70): warning : ignoring #pragma region
-     1>Menu/Menu.cpp(88): warning : ignoring #pragma endregion
-         Menu/Menu.cpp: In static member function 'static char* Menu::Start()':
-     1>Menu/Menu.cpp(120): warning : deprecated conversion from string constant to 'char*'
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Menu/Wave.o Menu/Wave.cpp
-         Menu/Wave.cpp: In static member function 'static void Wave::Render()':
-     1>Menu/Wave.cpp(56): warning : format '%d' expects type 'int', but argument 3 has type 'OSL_COLOR'
-     1>Menu/Wave.cpp(56): warning : format '%d' expects type 'int', but argument 3 has type 'OSL_COLOR'
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Menu/MainSection.o Menu/MainSection.cpp
-         Menu/MainSection.cpp: In function 'void drawRecent(int, int)':
-     1>Menu/MainSection.cpp(39): warning : deprecated conversion from string constant to 'char*'
-         Menu/MainSection.cpp: In member function 'virtual void MainSection::LoadResources()':
-     1>Menu/MainSection.cpp(94): warning : deprecated conversion from string constant to 'char*'
-     1>Menu/MainSection.cpp(95): warning : deprecated conversion from string constant to 'char*'
-     1>Menu/MainSection.cpp(98): warning : deprecated conversion from string constant to 'char*'
-         Menu/MainSection.cpp: In member function 'virtual OSL_IMAGE* MainSection::GetSplashIcon()':
-     1>Menu/MainSection.cpp(86): warning : control reaches end of non-void function
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Menu/Section.o Menu/Section.cpp
-         Menu/Section.cpp: In member function 'virtual OSL_IMAGE* Section::GetSplashIcon()':
-     1>Menu/Section.cpp(21): warning : control reaches end of non-void function
+﻿Build started 6/28/2014 1:49:44 AM.
+     1>Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" on node 2 (Build target(s)).
+     1>Build:
+         vsmake
          psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Menu/GameSelector.o Menu/GameSelector.cpp
          Menu/GameSelector.cpp: In member function 'virtual OSL_IMAGE* GameSelector::GetSplashIcon()':
-     1>Menu/GameSelector.cpp(50): warning : deprecated conversion from string constant to 'char*'
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o Config/Config.o Config/Config.cpp
-         Config/Config.cpp: In static member function 'static u32 Config::GetU32(Config::ConfigParams)':
-     1>Config/Config.cpp(217): warning : control reaches end of non-void function
-         Config/Config.cpp: In static member function 'static int Config::LoadDefaultConfig()':
-     1>Config/Config.cpp(116): warning : control reaches end of non-void function
-         Config/Config.cpp: In static member function 'static int Config::LoadConfig()':
-     1>Config/Config.cpp(57): warning : control reaches end of non-void function
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o File/FileManager.o File/FileManager.cpp
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o File/PBPParse.o File/PBPParse.cpp
-         File/PBPParse.cpp: In member function 'void PBPParse::Parse(const char*)':
-     1>File/PBPParse.cpp(29): warning : deprecated conversion from string constant to 'char*'
-     1>File/PBPParse.cpp(40): warning : deprecated conversion from string constant to 'char*'
-         psp-g++ -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150   -c -o File/SFOParse.o File/SFOParse.cpp
-         File/SFOParse.cpp: In member function 'void SFOParse::Parse(const char*)':
-     1>File/SFOParse.cpp(13): warning : comparison between signed and unsigned integer expressions
+     1>Menu/GameSelector.cpp(64): warning : deprecated conversion from string constant to 'char*'
+         Menu/GameSelector.cpp: In member function 'virtual void GameSelector::Render(u32, u32)':
+     1>Menu/GameSelector.cpp(93): warning : deprecated conversion from string constant to 'char*'
          psp-gcc -I. -IC:/pspsdk/psp/sdk/include -G0 -Wall -O2 -D_PSP_FW_VERSION=150  -Llibs -L. -LC:/pspsdk/psp/sdk/lib   main.o Callbacks.o Menu/Menu.o Menu/Wave.o Menu/MainSection.o Menu/Section.o Menu/GameSelector.o Config/Config.o File/FileManager.o File/PBPParse.o File/SFOParse.o -losl -lpng -lz -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum  -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan -lpspnet_adhocmatching -lpspnet_adhoc -lpspnet_adhocctl -lm -ljpeg -lpspdebug -lpspdisplay -lpspge -lpspctrl -lpspsdk -lc -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpsputility -lpspuser -lpspkernel -o MENTRO.elf
          psp-fixup-imports MENTRO.elf
-         mksfo 'Mentro' PARAM.SFO
          psp-strip MENTRO.elf -o MENTRO_strip.elf
          pack-pbp EBOOT.PBP PARAM.SFO NULL  \
          	NULL NULL NULL  \
@@ -61,11 +19,11 @@
          [3]          0 bytes | NULL
          [4]          0 bytes | NULL
          [5]          0 bytes | NULL
-         [6]     367604 bytes | MENTRO_strip.elf
+         [6]     369208 bytes | MENTRO_strip.elf
          [7]          0 bytes | NULL
          C:/pspsdk/bin/rm -f MENTRO_strip.elf
-     1>Done Building Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" (Rebuild target(s)).
+     1>Done Building Project "C:\Users\Himanshu\Source\Repos\Mentro\Mentro\Mentro.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.51
+Time Elapsed 00:00:02.09

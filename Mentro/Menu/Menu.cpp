@@ -47,11 +47,20 @@ Section* Menu::getSection(u8 id)
 u16 frames = 0;
 u8 TransitionEffect()
 {
+	if (frames == 0)
+	{
+		sections[newSectId]->LoadResources();
+	}
 	if (frames < 480)
 	{
 		//Slide transition while not crossed the entire screen
 		frames++;
+		Wave::Update();
+		Wave::Render();
+		sections[curSectId]->Update(frames, 0);
 		sections[curSectId]->Render(frames, 0);
+
+		sections[newSectId]->Update(480 - frames, 0);
 		sections[newSectId]->Render(480 - frames, 0);
 
 		return 1;
@@ -60,7 +69,6 @@ u8 TransitionEffect()
 		frames = 0;
 		//Apply the update and resume normal functions
 		sections[curSectId]->UnloadResources();
-		sections[newSectId]->LoadResources();
 		curSectId = newSectId;
 		newSectId = 0;
 		return 0;
@@ -126,6 +134,8 @@ char* Menu::Start()
 	oslIntraFontSetStyle(jp, 0.6f, RGB(255, 255, 255), RGB(30, 30, 30), 0);
 	oslSetFont(mainFont);
 
+	PBPParse::setDefaultUNKN();
+
 	pspDebugScreenPrintf("Resources Loaded...");
 
 	oslStartDrawing();
@@ -154,15 +164,17 @@ char* Menu::Start()
 
 				oslReadKeys();
 
-				if (osl_keys->pressed.L && osl_keys->pressed.R)
-				{
-					oslWriteImageFilePNG(oslGetDrawBuffer(), "ms0:/SCREENSHOT.PNG", 0);
-				}
 				Wave::Update();
 				if (sectId > curSectId)sections[curSectId]->Update(0, 0);
 
 				Wave::Render();
 				if (sectId > curSectId)sections[curSectId]->Render(0, 0);
+
+
+				if (osl_keys->pressed.L && osl_keys->pressed.R)
+				{
+					oslWriteImageFilePNG(oslGetDrawBuffer(), "ms0:/PICTURE/SCREENSHOT.PNG", 0);
+				}
 			}
 
 			oslEndDrawing();
