@@ -91,7 +91,7 @@ void MainSection::UnloadResources(){
 
 void MainSection::LoadResources(){
 	//Load the most recent app icon to show
-	if (FileManager::FileExists("ms0:/TMP/ICON0.PNG")) recentApp = oslLoadImageFilePNG("ms0:/TMP/ICON0.PNG", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	if (FileManager::FileExists("ms0:/TMP/ICON0.PNG")) recentApp = oslLoadImageFilePNG("ms0:/TMP/ICON0.PNG", OSL_IN_RAM, OSL_PF_8888);
 	else recentApp = oslLoadImageFilePNG("LGDEF.PNG", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 
 	//Load the most recent app icon to show
